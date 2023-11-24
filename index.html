@@ -7,6 +7,7 @@
 </head>
 <body>
     <script>
+
         function getComputerChoice() {
 
             return Math.ceil(3*Math.random())
@@ -26,12 +27,18 @@
             if (inp == 'scissors') {
                 return 3
             }
+
+            else {return 'error'}
             
         }
 
         function playRound(playerSelection, computerSelection) {
             
             playerSelection = convertNum(playerSelection.toLowerCase())
+
+            if (playerSelection == 'error') {
+                return 'try again'
+            }
 
             if (playerSelection == computerSelection) {
                 return 'draw'
@@ -50,10 +57,32 @@
             }
         }
 
-        const computerSelection = getComputerChoice()
-        let playerSelection = prompt('Rock, paper, scissors... Shoot!')
-        console.log(computerSelection)
-        console.log(playRound(playerSelection, computerSelection))
+        function game() {
+
+            let myScore = 0;
+            let computerScore = 0;
+
+            for (let i = 0; i < 5; i++) {
+
+                const computerSelection = getComputerChoice()
+                let playerSelection = prompt('Rock, paper, scissors... Shoot!')
+
+                outcome = playRound(playerSelection, computerSelection)
+                console.log(outcome)
+
+                if (outcome == 'try again') {i--}
+                if (outcome == 'win') {myScore += 1}
+                if (outcome == 'lose') {computerScore += 1}
+
+            }
+
+            if (myScore > computerScore) {console.log('You win!')}
+            if (computerScore > myScore) {console.log('You lost.')}
+            if (computerScore == myScore) {console.log("It's a draw!")}
+
+        }
+    
+    game()
 
     </script>
 </body>
