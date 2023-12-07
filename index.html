@@ -4,86 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors!</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <script>
 
-        function getComputerChoice() {
 
-            return Math.ceil(3*Math.random())
 
-        }
-
-        function convertNum(inp) {
-
-            if (inp == 'rock') {
-                return 1
-            }
-
-            if (inp == 'paper') {
-                return 2
-            }
-
-            if (inp == 'scissors') {
-                return 3
-            }
-
-            else {return 'error'}
-            
-        }
-
-        function playRound(playerSelection, computerSelection) {
-            
-            playerSelection = convertNum(playerSelection.toLowerCase())
-
-            if (playerSelection == 'error') {
-                return 'try again'
-            }
-
-            if (playerSelection == computerSelection) {
-                return 'draw'
-            }
-
-            if (playerSelection == computerSelection + 1) {
-                return 'win'
-            }
-
-            else if(playerSelection == 1 && computerSelection == 3) {
-                return 'win'
-            }
-
-            else {
-                return 'lose'
-            }
-        }
-
-        function game() {
-
-            let myScore = 0;
-            let computerScore = 0;
-
-            for (let i = 0; i < 5; i++) {
-
-                const computerSelection = getComputerChoice()
-                let playerSelection = prompt('Rock, paper, scissors... Shoot!')
-
-                outcome = playRound(playerSelection, computerSelection)
-                console.log(outcome)
-
-                if (outcome == 'try again') {i--}
-                if (outcome == 'win') {myScore += 1}
-                if (outcome == 'lose') {computerScore += 1}
-
-            }
-
-            if (myScore > computerScore) {console.log('You win!')}
-            if (computerScore > myScore) {console.log('You lost.')}
-            if (computerScore == myScore) {console.log("It's a draw!")}
-
-        }
-    
-    game()
-
-    </script>
 </body>
 </html>
